@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo/j.png">
+    <link rel="stylesheet" href="styles.css">
+    <title>PORTFOLIO</title>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-menu" id="menuToggle">
+                <span class="menu-icon">&#9776;</span>
+                <span class="menu-text">MENU</span>
+            </div>
+            <nav class="hero-nav" id="heroNav">
+                <ul>
+                    <button class="close-nav" id="closeNav" aria-label="Close menu">&times;</button>
+                    <li><a href="file:///C:/Users/delmi/OneDrive/Desktop/website/View-more/view.html">About Me</a></li>
+                    <li><a href="file:///C:/Users/delmi/OneDrive/Desktop/website/Galleries/galleries.html">Album</a></li>
+                    <li><a href="file:///C:/Users/delmi/OneDrive/Desktop/website/View-more/view.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <h2>Collect moments <br>Not things</h2>
+            <a href="file:///C:/Users/delmi/OneDrive/Desktop/website/View-more/view.html" class="hero-btn">VIEW MORE</a>
+        </div>
+    </section>
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const heroNav = document.getElementById('heroNav');
+        menuToggle.addEventListener('click', () => {
+            heroNav.classList.toggle('open');
+        });
+        document.querySelectorAll('.hero-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                heroNav.classList.remove('open');
+            });
+        });
+        document.getElementById('closeNav').addEventListener('click', () => {
+            heroNav.classList.remove('open');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="logo/j.png">
+  <title>Photo Galleries</title>
+  <link rel="stylesheet" href="../View-more/view.css">
+  <link rel="stylesheet" href="galleries.css">
+  <style>
+  </style>
+</head>
+<body>
+  <a id="back-btn" href="javascript:history.back()" aria-label="Go back">&larr; Back</a>
+  <div class="container">
+    <header>
+      <h1 class="title">Photo Galleries</h1>
+      <p class="subtitle">A collection of my favorite photography works.</p>
+    </header>
+
+    <section class="gallery-grid">
+      <div class="gallery-card">
+        <img class="gallery-thumb" src="gallery1.jpg" alt="Birthday Shoot" />
+        <div class="gallery-info">
+          <h2 class="gallery-title">Birthday Photo Shoot</h2>
+          <p class="gallery-desc">Candid moments and creative lighting from a vibrant birthday celebration.</p>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <img class="gallery-thumb" src="gallery2.jpg" alt="Golden Hour" />
+        <div class="gallery-info">
+          <h2 class="gallery-title">Golden Hour Portraits</h2>
+          <p class="gallery-desc">Warm, glowing portraits captured during the golden hour.</p>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <img class="gallery-thumb" src="gallery3.jpg" alt="Nature" />
+        <div class="gallery-info">
+          <h2 class="gallery-title">Nature & Landscapes</h2>
+          <p class="gallery-desc">Vibrant shots of landscapes and wildlife, highlighting natural beauty.</p>
+        </div>
+      </div>
+      <img class="gallery-thumb" src="gallery4.jpg" alt="Nature" />
+        <div class="gallery-info">
+          <h2 class="gallery-title">Others</h2>
+          <p class="gallery-desc">Other photographs</p>
+        </div>
+      </div>
+    </section>
+
+    <div id="gallery-modal" class="modal" style="display:none;">
+      <div class="modal-content" style="max-width:700px; width:95%; padding:24px 18px 18px; position:relative;">
+        <h2 id="modal-title" style="margin-top:0;"></h2>
+        <div id="modal-photos" class="modal-photos" style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); margin:18px 0; max-height:65vh; overflow-y:auto; padding-right:6px;"></div>
+        <button id="close-gallery-modal" class="modal-close" title="Close" style="position:absolute;top:10px;right:16px;font-size:1.7rem;background:none;border:none;color:var(--muted);cursor:pointer;">&times;</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const galleries = [
+      {
+        title: "Birthday Photo Shoot",
+        photos: [
+          "birthday1.jpg", "birthday2.jpg", "birthday3.jpg", "birthday4.jpg"
+        ]
+      },
+      {
+        title: "Golden Hour Portraits",
+        photos: [
+          "golden1.jpg", "golden2.jpg", "golden3.jpg", "golden4.jpg"
+        ]
+      },
+      {
+        title: "Nature & Landscapes",
+        photos: [
+          "nature1.jpg", "nature2.jpg", "nature3.jpg", "nature4.jpg",
+          "nature4.jpg", "nature5.jpg", "nature6.jpg", "nature7.jpg",
+          "nature8.jpg", "nature9.jpg", "nature10.jpg", "nature11.jpg",
+          "nature12.jpg", "nature13.jpg", "nature14.jpg", "nature15.jpg",
+          "nature16.jpg", "nature17.jpg", "nature18.jpg", "nature19.jpg",
+      ]
+      },
+      {
+      title: "Others",
+        photos: [
+          "nature1.jpg", "nature2.jpg", "nature3.jpg", "nature4.jpg",
+          "nature4.jpg", "nature5.jpg", "nature6.jpg", "nature7.jpg",
+          "nature8.jpg", "nature9.jpg", "nature10.jpg", "nature11.jpg",
+          "nature12.jpg", "nature13.jpg", "nature14.jpg", "nature15.jpg",
+          "nature16.jpg", "nature17.jpg", "nature18.jpg", "nature19.jpg",
+      ]
+      }
+    ];
+
+    // Get elements
+    const modal = document.getElementById('gallery-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalPhotos = document.getElementById('modal-photos');
+    const closeModal = document.getElementById('close-gallery-modal');
+    const galleryCards = document.querySelectorAll('.gallery-card');
+
+    galleryCards.forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        const gallery = galleries[idx];
+        modalTitle.textContent = gallery.title;
+        modalPhotos.innerHTML = gallery.photos.map(
+          src => `<img src="${src}" alt="">`
+        ).join('');
+        modal.style.display = 'flex';
+      });
+    });
+
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+    modal.addEventListener('click', e => {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+    const backBtn = document.getElementById('back-btn');
+    backBtn.addEventListener('click', () => {
+      history.back();
+    });
+  </script>
+</body>
+</html>
